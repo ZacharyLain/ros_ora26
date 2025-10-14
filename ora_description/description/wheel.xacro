@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+  <xacro:macro name="wheel" params="prefix x_reflect y_reflect">
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel_link"/>
+      <origin xyz="${main_wheel_x_offset} ${main_wheel_y_offset} ${main_wheel_z_offset}" rpy="-${pi / 2} 0.0 0.0"/>
+      <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="${prefix}_wheel_link">
+      <visual>
+        <geometry>
+          <cylinder radius="${main_wheel_radius}" length="${main_wheel_width}"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder radius="${main_wheel_radius}" length="${main_wheel_width}"/>
+        </geometry>
+      </collision>
+
+      <xacro:inertial_cylinder mass="1.0" length="${main_wheel_width}" radius="${main_wheel_radius}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:inertial_cylinder>
+    </link>
+        
+    <gazebo reference="${prefix}_wheel_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:wheel prefix="left" x_reflect="1" y_reflect="1" />
+  <xacro:wheel prefix="right" x_reflect="1" y_reflect="-1" />
+</robot>

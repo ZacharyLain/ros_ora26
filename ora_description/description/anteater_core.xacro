@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
+  <!-- This file contains the core robot description -->
+  <!-- This includes the frame of the robot and the wheels -->
+  <!-- The robot is a differential drive robot with two wheels and a caster wheel -->
+
+  <xacro:include filename="materials.xacro"/>
+  <xacro:include filename="dimensions.xacro"/>
+  <xacro:include filename="inertia_macros.xacro"/>
+
+  <!-- BASE LINK -->
+
+  <link name="base_link"/>
+  
+  <!-- BASE FOOTPRINT -->
+
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- CHASSIS LINK -->
+
+  <joint name="chassis_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin xyz="${main_wheel_x_offset} 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="chassis_link">
+    <visual>
+      <origin xyz="${base_length / 2} 0 ${base_height / 2}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <origin xyz="${base_length / 2} 0 ${base_height / 2}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </collision>
+
+    <xacro:inertial_box mass="10.0" x="${base_length}" y="${base_width}" z="${base_height}">
+      <origin xyz="${base_length / 2} 0 ${base_height / 2}" rpy="0 0 0"/>
+    </xacro:inertial_box>
+  </link>
+
+  <gazebo reference="chassis_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+</robot>
