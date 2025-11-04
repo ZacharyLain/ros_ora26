@@ -25,7 +25,7 @@ endif()
 
 
 install(
-  DIRECTORY description launch include
+  DIRECTORY description launch include rviz
   DESTINATION share/${PROJECT_NAME}
 )
 

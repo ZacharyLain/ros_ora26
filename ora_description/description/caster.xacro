@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:include filename="dimensions.xacro"/>
+  <xacro:include filename="inertia_macros.xacro"/>
+
   <!--###############-->
   <!-- Front Casters -->
   <!--###############-->
@@ -28,7 +31,7 @@
     <joint name="${prefix}_front_caster_joint" type="continuous">
       <parent link="base_link"/>
       <child link="${prefix}_front_caster_link"/>
-      <origin xyz="${x_reflect*front_caster_x_offset} ${y_reflect*front_caster_y_offset} ${main_wheel_z_offset - front_caster_z_offset}" rpy="0 0 0"/>
+      <origin xyz="${x_reflect*front_caster_x_offset} ${y_reflect*front_caster_y_offset} ${-main_wheel_radius + front_caster_radius}" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
     </joint>
 
@@ -70,7 +73,7 @@
     <joint name="${prefix}_back_caster_joint" type="continuous">
       <parent link="base_link"/>
       <child link="${prefix}_back_caster_link"/>
-      <origin xyz="${x_reflect*back_caster_x_offset} ${y_reflect*back_caster_y_offset} ${main_wheel_z_offset - back_caster_z_offset}" rpy="0 0 0"/>
+      <origin xyz="${x_reflect*back_caster_x_offset} ${y_reflect*back_caster_y_offset} ${-main_wheel_radius + back_caster_radius}" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
     </joint>
 
