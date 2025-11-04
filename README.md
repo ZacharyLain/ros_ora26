@@ -1,11 +1,11 @@
 # ora26_ws
-The ORA software for 2025.
+The ORA software for 2026.
 
 ## To work on the code
 ### Clone the repo
 ```
-mkdir ora25_ws && cd ora25_ws
-git clone https://github.com/oaklandrobotics/ros_ora25 src
+mkdir ora26_ws && cd ora26_ws
+git clone https://github.com/oaklandrobotics/ros_ora26 src
 ```
 
 ### Write some code!
