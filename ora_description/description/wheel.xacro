@@ -35,6 +35,6 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:wheel prefix="left" x_reflect="1" y_reflect="1" />
-  <xacro:wheel prefix="right" x_reflect="-1" y_reflect="-1" />
+  <xacro:wheel prefix="left" x_reflect="-1" y_reflect="1" />
+  <xacro:wheel prefix="right" x_reflect="1" y_reflect="-1" />
 </robot>
