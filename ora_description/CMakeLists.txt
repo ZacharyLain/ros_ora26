@@ -25,7 +25,7 @@ endif()
 
 
 install(
-  DIRECTORY config description include launch models rviz worlds
+  DIRECTORY config description launch models rviz worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

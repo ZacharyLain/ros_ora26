@@ -5,7 +5,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, LaunchService, LaunchContext
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, ExecuteProcess
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, ExecuteProcess, TimerAction
 from launch_ros.actions import Node
 from launch.substitutions import Command
 from launch.event_handlers import OnProcessStart
@@ -37,7 +37,7 @@ def generate_launch_description():
       )
     ]),
     launch_arguments={
-      'use_sim_time' : 'false',
+      'use_sim_time' : 'true',
       'use_ros2_control' : 'true'
     }.items()
   )
@@ -69,12 +69,22 @@ def generate_launch_description():
           'z': '0.65',
       }.items(),
   )
+
+  # Delay spawn by 5 seconds
+  # Was running into race condition where spawn_entity was starting before gazebo
+  delayed_spawn = TimerAction(
+    period=5.0,
+    actions=[ spawn_entity ]
+  )
     
   return LaunchDescription([
+    # Launch Args
+    DeclareLaunchArgument(name='use_sim_time', default_value='True', description='Flag to enable use_sim_time'),
+
     # Start the robot state publisher
     rsp,
     ExecuteProcess(cmd=['gz', 'sim', '-g'], output='screen'),
     gz_server,
     ros_gz_bridge,
-    spawn_entity,
+    delayed_spawn,
   ])
