@@ -13,6 +13,9 @@ launch:
 - arg:
     name: "world_name"
     default: "igvc_world.sdf"
+- arg:
+    name: "joy_config"
+    default: "wired_xbox.yaml"
 
 # Launch Nodes
 - include:
@@ -30,3 +33,11 @@ launch:
     arg:
       - name: "world_name"
         value: "$(var world_name)"
+
+- include:
+    file: "$(find-pkg-share ora_teleop)/launch/teleop.launch.yaml"
+    arg:
+      - name: "use_sim_time"
+        value: "$(var use_sim_time)"
+      - name: "joy_config"
+        value: "$(var joy_config)"
