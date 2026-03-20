@@ -25,16 +25,10 @@ endif()
 
 
 install(DIRECTORY 
-  config 
   description 
   launch 
-  models 
   rviz 
-  worlds
   DESTINATION share/${PROJECT_NAME}/
 )
-
-# Add hook to helper file which will export the model file path
-ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env_config/${PROJECT_NAME}_gz_path.sh.in")
 
 ament_package()

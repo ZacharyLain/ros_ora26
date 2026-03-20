@@ -17,6 +17,7 @@ from ros_gz_sim.actions import GzServer
 def generate_launch_description():
   # Packages for launching
   desc_pkg_share = get_package_share_directory('ora_description')
+  sim_pkg_share = get_package_share_directory('ora_sim')
 
   # This package is located at '/opt/ros/jazzy/ros_gz_sim/'
   ros_gz_sim_share = get_package_share_directory('ros_gz_sim')
@@ -25,8 +26,8 @@ def generate_launch_description():
   #launch_pkg_share = get_package_share_directory('ora_launch')
   
   # Gazebo files
-  world_path = os.path.join(desc_pkg_share, 'worlds', 'igvc_world.sdf')
-  bridge_config_path = os.path.join(desc_pkg_share, 'config', 'bridge_config.yaml')
+  world_path = os.path.join(sim_pkg_share, 'worlds', 'igvc_world.sdf')
+  bridge_config_path = os.path.join(sim_pkg_share, 'config', 'bridge_config.yaml')
   gz_spawn_model_launch_source = os.path.join(ros_gz_sim_share, "launch", "gz_spawn_model.launch.py")
 
   ##############################################

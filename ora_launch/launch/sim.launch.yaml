@@ -29,7 +29,7 @@ launch:
         value: "$(var rviz_config)"
 
 - include:
-    file: "$(find-pkg-share ora_description)/launch/gazebo.launch.yaml"
+    file: "$(find-pkg-share ora_sim)/launch/gazebo.launch.yaml"
     arg:
       - name: "world_name"
         value: "$(var world_name)"
