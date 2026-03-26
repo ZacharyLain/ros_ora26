@@ -25,4 +25,14 @@ launch:
     args: "--ros-args --params-file $(find-pkg-share ora_teleop)/config/$(var joy_config)"
     remap:
       - from: "/cmd_vel"
-        to: "/demo/cmd_vel"
+        to: "/cmd_vel_joy"
+
+- node:
+    pkg: "twist_mux"
+    exec: "twist_mux"
+    param:
+    - name: "use_sim_time"
+      value: "$(var use_sim_time)"
+    remap:
+    - from: "/cmd_vel_out"
+      to: "/sim/cmd_vel"
