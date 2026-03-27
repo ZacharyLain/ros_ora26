@@ -41,3 +41,15 @@ launch:
         value: "$(var use_sim_time)"
       - name: "joy_config"
         value: "$(var joy_config)"
+
+- include:
+    file: "$(find-pkg-share ora_lidar)/launch/filter.launch.yaml"
+    arg:
+      - name: "use_sim_time"
+        value: "$(var use_sim_time)"
+
+- include:
+    file: "$(find-pkg-share ora_navigation)/launch/nav.launch.yaml"
+    arg:
+      - name: "use_sim_time"
+        value: "$(var use_sim_time)"

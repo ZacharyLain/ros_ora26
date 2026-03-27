@@ -31,6 +31,7 @@ launch:
     pkg: "twist_mux"
     exec: "twist_mux"
     param:
+    - from: "$(find-pkg-share ora_teleop)/config/twist_mux.yaml"
     - name: "use_sim_time"
       value: "$(var use_sim_time)"
     remap:

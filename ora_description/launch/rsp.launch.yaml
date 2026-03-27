@@ -27,3 +27,6 @@ launch:
     name: "rviz2_robot"
     output: "screen"
     args: "-d $(find-pkg-share ora_description)/rviz/$(var rviz_config)"
+    param:
+    - name: "use_sim_time"
+      value: "$(var use_sim_time)"

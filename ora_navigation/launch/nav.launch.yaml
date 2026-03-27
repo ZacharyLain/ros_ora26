@@ -6,9 +6,15 @@ launch:
 
 # Launch Nodes
 - include:
-    file: "$(find-pkg-share slam_toolbox)/launch/online_async_launch.py"
+    file: "$(find-pkg-share ora_navigation)/launch/slam_toolbox.launch.yaml"
     arg:
       - name: "use_sim_time"
         value: "$(var use_sim_time)"
-      - name: "params_file"
-        value: "$(find-pkg-share ora_navigation)/config/mapper_params_online_async.yaml"
+
+# - include:
+#     file: "$(find-pkg-share nav2_bringup)/launch/navigation_launch.py"
+#     arg:
+#       - name: "params_file"
+#         value: "$(find-pkg-share ora_navigation)/config/nav2_params.yaml"
+#       - name: "use_sim_time"
+#         value: "$(var use_sim_time)"
