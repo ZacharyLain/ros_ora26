@@ -218,36 +218,4 @@
       </imu>
     </sensor>
   </gazebo>
-
-  <gazebo>
-    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
-      <!-- wheels -->
-      <left_joint>left_wheel_joint</left_joint>
-      <right_joint>right_wheel_joint</right_joint>
-
-      <!-- kinematics -->
-      <wheel_separation>${base_width}</wheel_separation>
-      <wheel_radius>${main_wheel_radius}</wheel_radius>
-
-      <!-- limits -->
-      <max_linear_acceleration>2.0</max_linear_acceleration>
-      <min_linear_acceleration>-2.0</min_linear_acceleration>
-
-      <!-- input -->
-      <topic>/sim/cmd_vel</topic>
-
-      <!-- output -->
-      <odom_topic>/sim/odom</odom_topic>
-      <tf_topic>/tf</tf_topic>
-
-      <frame_id>odom</frame_id>
-      <child_frame_id>base_link</child_frame_id>
-    </plugin>
-
-    <plugin
-      filename="gz-sim-joint-state-publisher-system"
-      name="gz::sim::systems::JointStatePublisher">
-      <topic>joint_states</topic>
-    </plugin>
-  </gazebo>
 </robot>

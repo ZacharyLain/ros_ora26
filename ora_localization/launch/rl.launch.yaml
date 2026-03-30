@@ -30,6 +30,8 @@ launch:
     arg:
       - name: "params_file"
         value: "$(find-pkg-share ora_teleop)/config/sim_rl_gps_ekf.yaml"
+      - name: "use_sim_time"
+        value: "$(var use_sim_time)"
     remap:
       - from: "wheel/odometry"
         to: "/sim/odom"
